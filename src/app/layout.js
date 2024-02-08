@@ -8,7 +8,7 @@ import './globals.scss'
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className='body'>{children}</body>
+      <body className='body' style={{backgroundColor:'rgb(242,244,245)'}}>{children}</body>
     </html>
   )
 }
