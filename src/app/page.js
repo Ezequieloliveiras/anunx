@@ -1,7 +1,13 @@
 
+import { Container } from '@mui/material'
+import TemplateDefault from './templates/Default'
 
 export default function Home() {
   return (
-<div>index</div>
-  );
+    <TemplateDefault>
+      <Container maxWidth="sm">
+      teste
+      </Container>
+    </TemplateDefault>
+  )
 }
