@@ -1,4 +1,50 @@
 .body {
   margin: 0;
-  background-color: "rgb(244, 244, 245)";
+  padding: 0;
+  background-color: rgb(242, 244, 245);
+}
+.body .thumbsContainer {
+  display: flex;
+}
+.body .dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 200px;
+  height: 150px;
+  margin: 0 15px 15px 0;
+  background-color: rgb(242, 244, 245);
+  border: 2px dashed black;
+}
+.body .thumb {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://source.unsplash.com/random);
+}
+.body .thumb .mask {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+}
+.body .thumb .mask .delete {
+  color: #ffffff;
+}
+.body .thumb .mainImage {
+  background-color: blue;
+  padding: 6px 10px;
+  position: absolute;
+  color: #ffffff;
+  bottom: 0;
+  left: 0;
+}
+.body .thumb:hover .mask {
+  display: flex;
 }/*# sourceMappingURL=globals.css.map */

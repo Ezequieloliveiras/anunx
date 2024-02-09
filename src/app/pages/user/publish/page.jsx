@@ -1,26 +1,29 @@
 "use client"
 
-import { Box, Button, Container, Select, TextField, Typography } from '@mui/material'
+import { Box, Button, Container, IconButton, Select, TextField, Typography } from '@mui/material'
 import { styled } from '@mui/system'
+
 import TemplateDefault from '../../../templates/Default'
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     padding: theme.spacing(8, 0, 4),
 }));
 
-
+import '../../../globals.scss';
+import {DeleteForever } from '@mui/icons-material';
 
 const Publish = () => {
+
     return (
         <TemplateDefault>
-            <StyledContainer maxWidth='sm' >
-                <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom >
-                    Publicar anúncio
-                </Typography>
-                <Typography component='h5' variant='h5' align='center' color='textPrimary'>
-                    Quanto mais detalhado, melhor!
-                </Typography>
-            </StyledContainer>
+                <StyledContainer maxWidth='sm' className='teste2'>
+                    <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom  className='teste'>
+                        Publicar anúncio
+                    </Typography>
+                    <Typography component='h5' variant='h5' align='center' color='textPrimary'>
+                        Quanto mais detalhado, melhor!
+                    </Typography>
+                </StyledContainer>
             <Container maxWidth='md'>
                 <Box sx={{ backgroundColor: '#ffffff', padding: '10px' }}>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
@@ -65,13 +68,32 @@ const Publish = () => {
                 </Box>
             </Container>
             <Container maxWidth='md' sx={{ marginTop: '20px' }}>
-                <Box sx={{ backgroundColor: '#ffffff', padding: '10px' }}>
+                <Box sx={{ backgroundColor: '#ffffff', padding: '10px',}}>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                         Imagens
                     </Typography>
                     <Typography component='div' variant='body2' color='textPrimary' >
                         A primeira imagem é a foto principal do seu anúncio.
                     </Typography>
+                    <Box className='thumbsContainer'>
+                        <Box className='dropzone'>
+                            <Typography>
+                                Clique para adicionar ou arraste a imagem para aqui.
+                            </Typography>
+                        </Box>
+                        <Box className='thumb' >
+                            <Box className='mainImage'>
+                            <Typography variant='body2'>
+                                Principal
+                            </Typography>
+                            </Box>
+                            <Box className='mask'>
+                                <IconButton color='inherit'>
+                                    <DeleteForever fontSize='large' className='delete'/>
+                                </IconButton>
+                            </Box>
+                        </Box>
+                    </Box>
                 </Box>
             </Container>
             <Container maxWidth='md' sx={{ marginTop: '20px' }}>
@@ -122,11 +144,12 @@ const Publish = () => {
             </Container>
             <Container maxWidth='md' sx={{ marginTop: '20px' }}>
                 <Box textAlign='right'>
-                    <Button variant='contained' color='primary'>
+                    <Button variant='contained' color='primary' className='teste'>
                         Publicar Anúncio
                     </Button>
                 </Box>
             </Container>
+
         </TemplateDefault>
     )
 }
