@@ -7,7 +7,11 @@ import { DeleteForever } from '@mui/icons-material'
 import {
     Box, Button,
     Container,
+    FormControl,
     IconButton,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
     Select,
     TextField,
     Typography
@@ -23,9 +27,9 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 
 const Publish = () => {
     const [files, setFile] = useState([])
-    
+
     const { getRootProps, getInputProps } = useDropzone({
-        accept: 'image/*',
+        accept: 'image/img',
         onDrop: (acceptFile) => {
             const newFiles = acceptFile.map(file => {
                 return Object.assign(file, {
@@ -46,7 +50,7 @@ const Publish = () => {
 
     return (
         <TemplateDefault>
-            <StyledContainer maxWidth='sm' className='teste2'>
+            <StyledContainer maxWidth='sm'>
                 <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom className='teste'>
                     Publicar anúncio
                 </Typography>
@@ -55,7 +59,7 @@ const Publish = () => {
                 </Typography>
             </StyledContainer>
             <Container maxWidth='md'>
-                <Box sx={{ backgroundColor: '#ffffff', padding: '10px' }}>
+                <Box className='box'>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                         Titulo do anúncio
                     </Typography>
@@ -97,8 +101,8 @@ const Publish = () => {
                     </Select>
                 </Box>
             </Container>
-            <Container maxWidth='md' sx={{ marginTop: '20px' }}>
-                <Box sx={{ backgroundColor: '#ffffff', padding: '10px', }}>
+            <Container className='boxContainer'>
+                <Box className='box'>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                         Imagens
                     </Typography>
@@ -114,20 +118,20 @@ const Publish = () => {
                         </Box>
                         {
                             files.map((file, index) => (
-                                <Box className='thumb' sx={{backgroundImage: `url(${file.preview})`}}>
+                                <Box className='thumb' sx={{ backgroundImage: `url(${file.preview})` }}>
                                     {
                                         index === 0 ?
-                                    <Box key={file.name} className='mainImage' >
-                                        <Typography variant='body2'>
-                                            Principal
-                                        </Typography>
-                                    </Box>
-                                    : null
+                                            <Box key={file.name} className='mainImage' >
+                                                <Typography variant='body2'>
+                                                    Principal
+                                                </Typography>
+                                            </Box>
+                                            : null
 
                                     }
 
                                     <Box className='mask'>
-                                        <IconButton color='inherit' onClick={() => {handleRemoveFile(file.name)}}>
+                                        <IconButton color='inherit' onClick={() => { handleRemoveFile(file.name) }}>
                                             <DeleteForever fontSize='large' className='delete' />
                                         </IconButton>
                                     </Box>
@@ -138,8 +142,8 @@ const Publish = () => {
                     </Box>
                 </Box>
             </Container>
-            <Container maxWidth='md' sx={{ marginTop: '20px' }}>
-                <Box sx={{ backgroundColor: '#ffffff', padding: '10px' }}>
+            <Container className='boxContainer'>
+                <Box className='box'>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                         Descrição
                     </Typography>
@@ -154,8 +158,27 @@ const Publish = () => {
                     />
                 </Box>
             </Container>
-            <Container maxWidth='md' sx={{ marginTop: '20px' }}>
-                <Box sx={{ backgroundColor: '#ffffff', padding: '10px' }}>
+            <Container className='boxContainer'>
+                <Box className='box'>
+                <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
+                        Preço
+                    </Typography>
+                    <br/>
+                    <FormControl fullWidth variant='outlined'>
+                    <InputLabel htmlFor="outlined-adornment-amount">Valor</InputLabel>
+                        <OutlinedInput 
+                    
+                            onChange={() => {}}
+                            startAdornment={<InputAdornment position='start'>R$</InputAdornment>}
+                            labelWidth={40}
+                            label="Valor"
+                        />
+                    </FormControl>
+                </Box>
+            </Container>
+
+            <Container className='boxContainer'>
+                <Box className='box'>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                         Dados de Contato
                     </Typography>
@@ -184,9 +207,9 @@ const Publish = () => {
                     />
                 </Box>
             </Container>
-            <Container maxWidth='md' sx={{ marginTop: '20px' }}>
+            <Container maxWidth='md' className='boxContainer'>
                 <Box textAlign='right'>
-                    <Button variant='contained' color='primary' className='teste'>
+                    <Button variant='contained' color='primary'>
                         Publicar Anúncio
                     </Button>
                 </Box>

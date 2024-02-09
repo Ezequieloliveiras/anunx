@@ -59,4 +59,13 @@
                  display: flex;
          }
 
+         .boxContainer {
+                 margin-top: 20px;
+
+                 .box {
+                         background-color: #ffffff;
+                         padding: 10px;
+                 }
+         }
+
  }
