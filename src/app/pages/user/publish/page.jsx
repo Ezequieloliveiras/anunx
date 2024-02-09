@@ -167,7 +167,6 @@ const Publish = () => {
                     <FormControl fullWidth variant='outlined'>
                     <InputLabel htmlFor="outlined-adornment-amount">Valor</InputLabel>
                         <OutlinedInput 
-                    
                             onChange={() => {}}
                             startAdornment={<InputAdornment position='start'>R$</InputAdornment>}
                             labelWidth={40}

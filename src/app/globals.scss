@@ -4,7 +4,10 @@
          margin: 0;
          padding: 0;
          background-color: rgb(242, 244, 245);
-
+         
+        .cardMedia {
+               padding-top: 56%;
+        }
          .thumbsContainer {
                  display: flex;
                  flex-wrap: wrap;
@@ -67,5 +70,21 @@
                          padding: 10px;
                  }
          }
+
+         .searchContainer {
+                 padding: 90px 60px 0px;
+
+                 .searchBox {
+                         display: flex;
+                         justify-content: center;
+                         padding: 20px;
+                         margin-top: 20px;
+                 }
+         }
+
+         .cardGrid {
+           margin-top:60px;
+         }
+
 
  }
