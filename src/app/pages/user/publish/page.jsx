@@ -1,29 +1,59 @@
 "use client"
-
-import { Box, Button, Container, IconButton, Select, TextField, Typography } from '@mui/material'
+import { useState } from 'react'
+import { useDropzone } from 'react-dropzone'
 import { styled } from '@mui/system'
+import { DeleteForever } from '@mui/icons-material'
+
+import {
+    Box, Button,
+    Container,
+    IconButton,
+    Select,
+    TextField,
+    Typography
+} from '@mui/material'
 
 import TemplateDefault from '../../../templates/Default'
+import '../../../globals.scss'
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     padding: theme.spacing(8, 0, 4),
-}));
+}))
 
-import '../../../globals.scss';
-import {DeleteForever } from '@mui/icons-material';
 
 const Publish = () => {
+    const [files, setFile] = useState([])
+    
+    const { getRootProps, getInputProps } = useDropzone({
+        accept: 'image/*',
+        onDrop: (acceptFile) => {
+            const newFiles = acceptFile.map(file => {
+                return Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                })
+            })
+
+            setFile([
+                ...files,
+                ...newFiles])
+        }
+    })
+
+    const handleRemoveFile = fileName => {
+        const newFilesState = files.filter(file => file.name !== fileName)
+        setFile(newFilesState)
+    }
 
     return (
         <TemplateDefault>
-                <StyledContainer maxWidth='sm' className='teste2'>
-                    <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom  className='teste'>
-                        Publicar anúncio
-                    </Typography>
-                    <Typography component='h5' variant='h5' align='center' color='textPrimary'>
-                        Quanto mais detalhado, melhor!
-                    </Typography>
-                </StyledContainer>
+            <StyledContainer maxWidth='sm' className='teste2'>
+                <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom className='teste'>
+                    Publicar anúncio
+                </Typography>
+                <Typography component='h5' variant='h5' align='center' color='textPrimary'>
+                    Quanto mais detalhado, melhor!
+                </Typography>
+            </StyledContainer>
             <Container maxWidth='md'>
                 <Box sx={{ backgroundColor: '#ffffff', padding: '10px' }}>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
@@ -68,7 +98,7 @@ const Publish = () => {
                 </Box>
             </Container>
             <Container maxWidth='md' sx={{ marginTop: '20px' }}>
-                <Box sx={{ backgroundColor: '#ffffff', padding: '10px',}}>
+                <Box sx={{ backgroundColor: '#ffffff', padding: '10px', }}>
                     <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                         Imagens
                     </Typography>
@@ -76,23 +106,35 @@ const Publish = () => {
                         A primeira imagem é a foto principal do seu anúncio.
                     </Typography>
                     <Box className='thumbsContainer'>
-                        <Box className='dropzone'>
+                        <Box className='dropzone'{...getRootProps()}>
+                            <input {...getInputProps()} />
                             <Typography>
                                 Clique para adicionar ou arraste a imagem para aqui.
                             </Typography>
                         </Box>
-                        <Box className='thumb' >
-                            <Box className='mainImage'>
-                            <Typography variant='body2'>
-                                Principal
-                            </Typography>
-                            </Box>
-                            <Box className='mask'>
-                                <IconButton color='inherit'>
-                                    <DeleteForever fontSize='large' className='delete'/>
-                                </IconButton>
-                            </Box>
-                        </Box>
+                        {
+                            files.map((file, index) => (
+                                <Box className='thumb' sx={{backgroundImage: `url(${file.preview})`}}>
+                                    {
+                                        index === 0 ?
+                                    <Box key={file.name} className='mainImage' >
+                                        <Typography variant='body2'>
+                                            Principal
+                                        </Typography>
+                                    </Box>
+                                    : null
+
+                                    }
+
+                                    <Box className='mask'>
+                                        <IconButton color='inherit' onClick={() => {handleRemoveFile(file.name)}}>
+                                            <DeleteForever fontSize='large' className='delete' />
+                                        </IconButton>
+                                    </Box>
+                                </Box>
+                            ))
+                        }
+
                     </Box>
                 </Box>
             </Container>
