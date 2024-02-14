@@ -3,8 +3,23 @@
   padding: 0;
   background-color: rgb(242, 244, 245);
 }
+.body .container {
+  padding: 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.body .container .button {
+  margin: 30px auto;
+  display: block;
+}
+.body .cardMedia {
+  padding-top: 56%;
+}
 .body .thumbsContainer {
   display: flex;
+  flex-wrap: wrap;
 }
 .body .dropzone {
   display: flex;
@@ -22,8 +37,8 @@
   width: 200px;
   height: 150px;
   background-size: cover;
+  margin: 0 15px 15px 0;
   background-position: center;
-  background-image: url(https://source.unsplash.com/random);
 }
 .body .thumb .mask {
   display: none;
@@ -47,4 +62,44 @@
 }
 .body .thumb:hover .mask {
   display: flex;
+}
+.body .boxContainer {
+  margin-top: 20px;
+}
+.body .boxContainer .box {
+  background-color: #ffffff;
+  padding: 10px;
+}
+.body .searchContainer {
+  padding: 90px 60px 0px;
+}
+.body .searchContainer .searchBox {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+.body .cardGrid {
+  margin-top: 60px;
+}
+.body .userName {
+  margin-left: 6px;
+}
+.body .divider {
+  margin: "8px 0px";
+}
+.body .link {
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+.body .container-footer {
+  border-top: 1px solid inherit;
+}
+.body .container-footer .divider-two {
+  padding-top: 50px;
+}
+.body .container-footer .content-footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }/*# sourceMappingURL=globals.css.map */

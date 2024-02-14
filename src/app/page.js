@@ -6,8 +6,6 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActions,
-  Button,
   Container,
   Grid,
   IconButton,

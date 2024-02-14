@@ -1,14 +1,18 @@
-import Header from '../components/header'
+import { Container } from '@mui/material'
 
+import Header from '../components/header'
+import Footer from '../components/footer'
 import '../globals.scss'
 
-const Default = ({children}) => {
+const Default = ({ children }) => {
     return (
-      
+
         <div>
-        <Header />
-        {children}
-        <footer>FOOTER</footer>
+            <Header />
+            <Container className='container'>
+                {children}
+            </Container>
+            <Footer />
         </div>
 
     )
