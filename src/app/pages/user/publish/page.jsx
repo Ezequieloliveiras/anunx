@@ -127,9 +127,7 @@ const Publish = () => {
                                                 </Typography>
                                             </Box>
                                             : null
-
                                     }
-
                                     <Box className='mask'>
                                         <IconButton color='inherit' onClick={() => { handleRemoveFile(file.name) }}>
                                             <DeleteForever fontSize='large' className='delete' />

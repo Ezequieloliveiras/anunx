@@ -102,4 +102,40 @@
 .body .container-footer .content-footer {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+.body .box-carossel {
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  text-align: left;
+  padding: 24px;
+}
+.body .box-carossel .card-carousel {
+  height: 100%;
+}
+.body .box-carossel .card-carousel .card-media {
+  padding-top: 56%;
+}
+.body .box-titles {
+  background-color: #ffffff;
+  padding: 20px;
+}
+.body .box-titles .productName {
+  margin: 15px 0;
+}
+.body .box-titles .price {
+  margin-bottom: 15px;
+}
+.body .card-profile {
+  padding: 30px 20px;
+}
+.body .box-text {
+  margin-top: 30px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.body .box-text .productName {
+  margin: 15px 0;
+}
+.body .box-text .price {
+  margin-bottom: 15px;
 }/*# sourceMappingURL=globals.css.map */
