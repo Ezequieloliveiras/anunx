@@ -63,10 +63,14 @@
 .body .thumb:hover .mask {
   display: flex;
 }
-.body .boxContainer {
-  margin-top: 20px;
+.body .form {
+  min-width: 80%;
 }
-.body .boxContainer .box {
+.body .form .box-container {
+  margin-top: 20px;
+  min-width: 100%;
+}
+.body .form .box-container .box {
   background-color: #ffffff;
   padding: 10px;
 }

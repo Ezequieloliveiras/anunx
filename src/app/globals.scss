@@ -76,12 +76,17 @@
                  display: flex;
          }
 
-         .boxContainer {
-                 margin-top: 20px;
+         .form {
+                 min-width: 80%;
 
-                 .box {
-                         background-color: #ffffff;
-                         padding: 10px;
+                 .box-container {
+                         margin-top: 20px;
+                         min-width: 100%;
+
+                         .box {
+                                 background-color: #ffffff;
+                                 padding: 10px;
+                         }
                  }
          }
 
@@ -135,11 +140,11 @@
                  padding: 24px;
 
                  .card-carousel {
-                        height: 100%;
+                         height: 100%;
 
-                        .card-media {
-                                padding-top: 56%;
-                        }
+                         .card-media {
+                                 padding-top: 56%;
+                         }
                  }
 
          }
@@ -174,19 +179,20 @@
                          margin-bottom: 15px;
                  }
          }
+
          .search-box {
-                display: flex;
-                justify-content: space-between;
-                padding: 10px 20px;
+                 display: flex;
+                 justify-content: space-between;
+                 padding: 10px 20px;
          }
 
          .box-list {
-                background-color: #ffffff;
-                margin-top: 30px;
-                padding: 30px;
+                 background-color: #ffffff;
+                 margin-top: 30px;
+                 padding: 30px;
          }
 
-         
+
 
 
  }
