@@ -138,4 +138,14 @@
 }
 .body .box-text .price {
   margin-bottom: 15px;
+}
+.body .search-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.body .box-list {
+  background-color: #ffffff;
+  margin-top: 30px;
+  padding: 30px;
 }/*# sourceMappingURL=globals.css.map */

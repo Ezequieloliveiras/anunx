@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <>
       <TemplateDefault>
-        <Container maxWidth='md' className='searchContainer'>
+        <Container maxWidth='lg' className='searchContainer'>
           <Typography component='h1' variant='h3' align='center' color='textPrimary'>
             O que deseja encontrar?
           </Typography>
