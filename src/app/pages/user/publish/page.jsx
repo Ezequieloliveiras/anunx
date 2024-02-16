@@ -13,6 +13,7 @@ import {
     IconButton,
     InputAdornment,
     InputLabel,
+    Input,
     MenuItem,
     FormControl,
     FormHelperText,
@@ -30,7 +31,10 @@ const validationSchema = yup.object().shape({
         .min(6, 'Escreva um título maior')
         .max(100, 'Titulo muito grande')
         .required('Campo obrigatório'),
-        category: yup.string().required('Campo obrigatório')
+    category: yup.string().required('Campo obrigatório'),
+    description: yup.string()
+        .min(50, 'Escreva uma descrição com pelo menos 50 caracteres')
+        .required('Campo obrigatório'),
 })
 
 const StyledContainer = styled(Container)(({ theme }) => ({
@@ -66,7 +70,8 @@ const Publish = () => {
             <Formik
                 initialValues={{
                     title: '',
-                    category:'', 
+                    category: '',
+                    description: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
@@ -91,28 +96,28 @@ const Publish = () => {
                                         Quanto mais detalhado, melhor!
                                     </Typography>
                                 </StyledContainer>
+
                                 <Container maxWidth='md' className='box-container'>
                                     <Box className='box'>
-                                        <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
-                                            Titulo do anúncio
-                                        </Typography>
-                                        <TextField
-                                            name='title'
-                                            value={values.title}
-                                            onChange={handleChange}
-                                            label='ex: Bicicleta Aro 18 com garantia'
-                                            size='small'
-                                            fullWidth
-                                            error={!!errors.title}
-                                            helperText={errors.title}
-                                        />
-
+                                        <FormControl error={errors.title} fullWidth>
+                                            <InputLabel className='input-label' >Titulo do anúncio </InputLabel>
+                                            <Input
+                                                variant="standard"
+                                                name='title'
+                                                value={values.title}
+                                                onChange={handleChange}
+                                                error={!!errors.title}
+                                            />
+                                            <FormHelperText>
+                                                {errors.category}
+                                            </FormHelperText>
+                                        </FormControl>
                                         <br /><br />
-                                        <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
-                                            Categoria
-                                        </Typography>
+
                                         <FormControl error={errors.category} fullWidth>
+                                            <InputLabel className='input-label' >Categoria</InputLabel>
                                             <Select
+                                                variant="standard"
                                                 name='category'
                                                 value={values.category}
                                                 fullWidth
@@ -140,6 +145,7 @@ const Publish = () => {
                                         </FormControl>
                                     </Box>
                                 </Container>
+
                                 <Container className='box-container'>
                                     <Box className='box'>
                                         <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
@@ -160,7 +166,7 @@ const Publish = () => {
                                                     <Box key={file.name} className='thumb' sx={{ backgroundImage: `url(${file.preview})` }}>
                                                         {
                                                             index === 0 ?
-                                                                <Box  className='mainImage' >
+                                                                <Box className='mainImage' >
                                                                     <Typography variant='body2'>
                                                                         Principal
                                                                     </Typography>
@@ -175,24 +181,23 @@ const Publish = () => {
                                                     </Box>
                                                 ))
                                             }
-
                                         </Box>
                                     </Box>
                                 </Container>
                                 <Container className='box-container'>
                                     <Box className='box'>
-                                        <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
-                                            Descrição
-                                        </Typography>
-                                        <Typography component='div' variant='body2' color='textPrimary' gutterBottom >
-                                            Escreva os detalhes do que está vendendo.
-                                        </Typography>
-                                        <TextField
-                                            multiline
-                                            rows={6}
-                                            variant='outlined'
-                                            fullWidth
-                                        />
+                                        <FormControl error={errors.description} fullWidth>
+                                            <InputLabel className='input-label' >Escreva os detalhes do que está vendendo.</InputLabel>
+                                            <Input
+                                                name='description'
+                                                multiline
+                                                rows={6}
+                                                variant='outlined'
+                                            />
+                                            <FormHelperText>
+                                                {errors.description}
+                                            </FormHelperText>
+                                        </FormControl>
                                     </Box>
                                 </Container>
                                 <Container className='box-container'>
@@ -204,7 +209,7 @@ const Publish = () => {
                                         <FormControl fullWidth variant='outlined'>
                                             <InputLabel htmlFor="outlined-adornment-amount">Valor</InputLabel>
                                             <OutlinedInput
-                                                onChange={() => {}}
+                                                onChange={() => { }}
                                                 startAdornment={<InputAdornment position='start'>R$</InputAdornment>}
                                                 fullWidth
                                                 label="Valor"

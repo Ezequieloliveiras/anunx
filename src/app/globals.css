@@ -72,7 +72,11 @@
 }
 .body .form .box-container .box {
   background-color: #ffffff;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+.body .form .box-container .box .input-label {
+  font-weight: 700;
 }
 .body .searchContainer {
   padding: 90px 60px 0px;
