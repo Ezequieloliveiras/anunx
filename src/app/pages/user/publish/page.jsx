@@ -20,10 +20,9 @@ import {
 
 import '../../../globals.scss'
 import TemplateDefault from '../../../templates/Default'
-import FileUpload from '../../../components/fileUpload'
+import FileUpload from '../../../components/FileUpload'
 
 import { initialValues, validationSchema } from './formValues'
-
 
 
 const StyledContainer = styled(Container)(({ theme }) => ({
@@ -52,10 +51,15 @@ const Publish = () => {
                         setFieldValue,
                     }) => {
 
-                       
-
                         return (
-                            <form onSubmit={handleSubmit} className='form'>
+                            <form onSubmit={handleSubmit} fullWidth
+                                style={{
+                                    width: '100%',
+                                    borderRadius: '5px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
                                 <StyledContainer maxWidth='sm'>
                                     <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom>
                                         Publicar anúncio
@@ -65,10 +69,22 @@ const Publish = () => {
                                     </Typography>
                                 </StyledContainer>
 
-                                <Container maxWidth='md' className='box-container'>
-                                    <Box className='box'>
+                                <Container maxWidth='md'
+                                    sx={{
+                                        backgroundColor: '#ffffff',
+                                        padding: '30px',
+                                        borderRadius: '5px',
+                                        marginBottom:'20px'
+                                    }}>
+                                    <Box
+                                        sx={{
+                                            backgroundColor: '#ffffff',
+                                            padding: '20px',
+                                            borderRadius: '5px',
+                                            marginBottom: '20px'
+                                        }}>
                                         <FormControl error={errors.title && touched.title} fullWidth>
-                                            <InputLabel className='input-label' >Titulo do anúncio </InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >Titulo do anúncio </InputLabel>
                                             <Input
                                                 variant="standard"
                                                 name='title'
@@ -77,13 +93,13 @@ const Publish = () => {
                                                 error={!!errors.title && touched.title ? errors.title : null}
                                             />
                                             <FormHelperText>
-                                                {errors.title  && touched.title ? errors.title : null}
+                                                {errors.title && touched.title ? errors.title : null}
                                             </FormHelperText>
                                         </FormControl>
                                         <br /><br />
 
                                         <FormControl error={errors.category && touched.category} fullWidth>
-                                            <InputLabel className='input-label' >Categoria</InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >Categoria</InputLabel>
                                             <Select
                                                 variant="standard"
                                                 name='category'
@@ -114,20 +130,40 @@ const Publish = () => {
                                     </Box>
                                 </Container>
 
-                                <Container className='box-container'>
-                                    <Box className='box'>
-                                      <FileUpload
-                                      files={values.files}
-                                      errors={errors.files} 
-                                      touched={touched.files}
-                                      setFieldValue={setFieldValue}
-                                      />
+                                <Container maxWidth='md'
+                                    sx={{
+                                        backgroundColor: '#ffffff',
+                                        padding: '20px',
+                                        borderRadius: '5px'
+                                    }}>
+                                    <Box
+                                        sx={{
+                                            backgroundColor: '#ffffff',
+                                            padding: '20px',
+                                            borderRadius: '5px',
+                                        }}>
+                                        <FileUpload
+                                            files={values.files}
+                                            errors={errors.files}
+                                            touched={touched.files}
+                                            setFieldValue={setFieldValue}
+                                        />
                                     </Box>
                                 </Container>
-                                <Container className='box-container'>
-                                    <Box className='box'>
+                                <Container maxWidth='md'
+                                    sx={{
+                                        backgroundColor: '#ffffff',
+                                        padding: '20px',
+                                        borderRadius: '5px',
+                                        marginTop: '20px'
+                                    }}>
+                                    <Box sx={{
+                                        backgroundColor: '#ffffff',
+                                        padding: '20px',
+                                        borderRadius: '5px'
+                                    }}>
                                         <FormControl error={errors.description && touched.description} fullWidth>
-                                            <InputLabel className='input-label' >Escreva os detalhes do que está vendendo.</InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >Escreva os detalhes do que está vendendo.</InputLabel>
                                             <Input
                                                 name='description'
                                                 multiline
@@ -141,10 +177,21 @@ const Publish = () => {
                                         </FormControl>
                                     </Box>
                                 </Container>
-                                <Container className='box-container'>
-                                    <Box className='box'>
+                                <Container maxWidth='md'
+                                    sx={{
+                                        backgroundColor: '#ffffff',
+                                        padding: '20px',
+                                        borderRadius: '5px',
+                                        marginTop: '20px'
+                                    }}>
+                                    <Box
+                                        sx={{
+                                            backgroundColor: '#ffffff',
+                                            padding: '20px',
+                                            borderRadius: '5px'
+                                        }}>
                                         <FormControl error={errors.price && touched.price} fullWidth>
-                                            <InputLabel className='input-label' >Preço de venda</InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >Preço de venda</InputLabel>
                                             <Input
                                                 name='price'
                                                 variant='outlined'
@@ -158,13 +205,24 @@ const Publish = () => {
                                     </Box>
                                 </Container>
 
-                                <Container className='box-container'>
-                                    <Box className='box'>
+                                <Container maxWidth='md'
+                                    sx={{
+                                        backgroundColor: '#ffffff',
+                                        padding: '20px',
+                                        borderRadius: '5px',
+                                        marginBottom: '20px',
+                                        marginTop: '20px'
+                                    }}>
+                                    <Box
+                                        sx={{
+                                            padding: '20px',
+                                            borderRadius: '5px'
+                                        }}>
                                         <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
                                             Dados de Contato
                                         </Typography>
                                         <FormControl error={errors.name && touched.name} fullWidth>
-                                            <InputLabel className='input-label' >Nome</InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >Nome</InputLabel>
                                             <Input
                                                 variant="standard"
                                                 name='name'
@@ -178,7 +236,7 @@ const Publish = () => {
                                         </FormControl>
                                         <br /><br />
                                         <FormControl error={errors.email && touched.email} fullWidth>
-                                            <InputLabel className='input-label' >E-mail</InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >E-mail</InputLabel>
                                             <Input
                                                 variant="standard"
                                                 name='email'
@@ -192,7 +250,7 @@ const Publish = () => {
                                         </FormControl>
                                         <br /><br />
                                         <FormControl error={errors.phone && touched.phone} fullWidth>
-                                            <InputLabel className='input-label' >Telefone</InputLabel>
+                                            <InputLabel sx={{ fontWeight: '700' }} >Telefone</InputLabel>
                                             <Input
                                                 variant="standard"
                                                 name='phone'
@@ -206,8 +264,14 @@ const Publish = () => {
                                         </FormControl>
                                     </Box>
                                 </Container>
-                                <Container maxWidth='md' className='box-container'>
-                                    <Box textAlign='right'>
+                                <Container maxWidth='md'
+                                    sx={{
+                                        width: '100%',
+                                        padding: '20px',
+                                        borderRadius: '5px',
+                                    
+                                    }}>
+                                    <Box textAlign='right' sx={{ width: '100%' }}>
                                         <Button type='submit' variant='contained' color='primary' >
                                             Publicar Anúncio
                                         </Button>
@@ -218,8 +282,6 @@ const Publish = () => {
                     }
                 }
             </Formik>
-
-
         </TemplateDefault>
     )
 }

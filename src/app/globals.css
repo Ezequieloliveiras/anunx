@@ -156,4 +156,8 @@
   background-color: #ffffff;
   margin-top: 30px;
   padding: 30px;
+}
+
+.show {
+  display: flex !important;
 }/*# sourceMappingURL=globals.css.map */

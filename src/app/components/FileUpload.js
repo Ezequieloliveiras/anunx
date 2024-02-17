@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { useDropzone } from 'react-dropzone'
 import { DeleteForever } from '@mui/icons-material'
 
@@ -7,8 +8,24 @@ import {
     Typography
 } from '@mui/material'
 
+const StyledBox = styled('box')({
+    position: 'absolute',
+    display: 'flex',
+    color: 'rgb(0, 0, 0, 0.0)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    height: '100%',
+    width: '100%',
 
-const FileUpload = ({files, errors, touched, setFieldValue}) => {
+    '&:hover': {
+        backgroundColor: 'rgb(0, 0, 0, 0.7)',
+        display: 'flex',
+        color: 'white'
+    },
+})
+
+const FileUpload = ({ files, errors, touched, setFieldValue }) => {
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
         onDrop: (acceptFile) => {
@@ -34,7 +51,7 @@ const FileUpload = ({files, errors, touched, setFieldValue}) => {
             <Typography component='h6' variant='h6' color={errors && touched ? 'error' : 'textPrimary'} gutterBottom >
                 Imagens
             </Typography>
-            <Typography component='div' variant='body2' color={errors ? 'error' : 'textPrimary'} >
+            <Typography component='div' variant='body2' color={errors ? 'error' : 'textPrimary'} gutterBottom >
                 A primeira imagem é a foto principal do seu anúncio.
             </Typography>
             {
@@ -42,8 +59,24 @@ const FileUpload = ({files, errors, touched, setFieldValue}) => {
                     ? <Typography variant='body2' color='error' gutterBottom >{errors}</Typography>
                     : null
             }
-            <Box className='thumbsContainer'>
-                <Box className='dropzone'{...getRootProps()}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap'
+                }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                        width: '200px',
+                        height: '150px',
+                        margin: '0 15px 15px 0',
+                        backgroundColor: 'rgb(242, 244, 245)',
+                        border: '2px dashed black',
+
+                    }}{...getRootProps()}>
                     <input name='files'{...getInputProps()} />
                     <Typography color={errors ? 'error' : 'textPrimary'}>
                         Clique para adicionar ou arraste a imagem para aqui.
@@ -51,25 +84,45 @@ const FileUpload = ({files, errors, touched, setFieldValue}) => {
                 </Box>
                 {
                     files.map((file, index) => (
-                        <Box key={file.name} className='thumb' sx={{ backgroundImage: `url(${file.preview})` }}>
+                        <Box key={file.path}
+                            sx={{
+                                position: 'relative',
+                                backgroundImage: `url(${file.preview})`,
+                                width: '200px',
+                                height: '150px',
+                                backgroundSize: 'cover',
+                                margin: '0 15px 15px 0',
+                                backgroundPosition: 'center',
+                                '&:hover': {
+                                    display: 'flex',
+                                },
+                            }}>
                             {
                                 index === 0 ?
-                                    <Box className='mainImage' >
+                                    <Box sx={{
+                                        backgroundColor: 'blue',
+                                        padding: '6px 10px',
+                                        position: 'absolute',
+                                        color: '#ffffff',
+                                        bottom: 0,
+                                        left: 0,
+                                    }} >
                                         <Typography variant='body2'>
                                             Principal
                                         </Typography>
                                     </Box>
                                     : null
                             }
-                            <Box className='mask'>
+                            <StyledBox>
                                 <IconButton color='inherit' onClick={() => { handleRemoveFile(file.path) }}>
-                                    <DeleteForever fontSize='large' className='delete' />
+                                    <DeleteForever fontSize='large' />
                                 </IconButton>
-                            </Box>
+                            </StyledBox>
+
                         </Box>
                     ))
                 }
-            </Box>
+            </Box >
         </>
     )
 }
