@@ -4,8 +4,9 @@ import {
   Button,
   Container,
   Grid,
-  Typography
+  Typography,
 } from '@mui/material'
+
 
 import TemplateDefault from '../../../templates/Default'
 import Card from '../../../components/Card'
@@ -18,7 +19,12 @@ export default function HomeUser() {
         <Typography component='h1' variant='h2' align='center'>
           Meus Anúncios
         </Typography>
-        <Button variant='contained' color='inherit' className='button'>
+        <Button variant='contained' color='inherit'
+          sx={{
+            margin: '30px auto',
+            display: 'block',
+          }}
+        >
           Publicar novo anúncio
         </Button>
       </Container>

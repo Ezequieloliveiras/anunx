@@ -1,21 +1,14 @@
-
 'use client'
 
-import { Formik } from 'formik'
 import TemplateDefault from '../../../templates/Default'
 
 import {
     Box,
     Container,
     Typography,
-    FormControl,
-    InputLabel,
 } from '@mui/material'
 
 import '../../../globals.scss'
-
-
-import styled from 'styled-components';
 
 
 const Signup = () => {

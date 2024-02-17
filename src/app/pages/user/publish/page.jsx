@@ -17,13 +17,9 @@ import {
     Typography
 } from '@mui/material'
 
-
-import '../../../globals.scss'
 import TemplateDefault from '../../../templates/Default'
 import FileUpload from '../../../components/FileUpload'
-
 import { initialValues, validationSchema } from './formValues'
-
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     padding: theme.spacing(8, 0, 4),
