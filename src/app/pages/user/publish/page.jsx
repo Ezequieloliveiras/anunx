@@ -1,7 +1,6 @@
 "use client"
 
 import { Formik } from 'formik'
-import { styled } from '@mui/system'
 
 import {
     Box,
@@ -133,7 +132,7 @@ const Publish = () => {
                                     <Box
                                         sx={{
                                             backgroundColor: '#ffffff',
-                                            padding:'10px 0px',
+                                            padding:'20px 0px',
                                             borderRadius: '5px',
                                         }}>
                                         <FileUpload
