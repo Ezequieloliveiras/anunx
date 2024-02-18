@@ -62,7 +62,8 @@ const FileUpload = ({ files, errors, touched, setFieldValue }) => {
             <Box
                 sx={{
                     display: 'flex',
-                    flexWrap: 'wrap'
+                    flexWrap: 'wrap',
+                    padding:'0px'
                 }}>
                 <Box
                     sx={{
@@ -72,9 +73,9 @@ const FileUpload = ({ files, errors, touched, setFieldValue }) => {
                         textAlign: 'center',
                         width: '200px',
                         height: '150px',
-                        margin: '0 15px 15px 0',
                         backgroundColor: 'rgb(242, 244, 245)',
                         border: '2px dashed black',
+                        marginRight:'10px'
 
                     }}{...getRootProps()}>
                     <input name='files'{...getInputProps()} />
@@ -91,7 +92,7 @@ const FileUpload = ({ files, errors, touched, setFieldValue }) => {
                                 width: '200px',
                                 height: '150px',
                                 backgroundSize: 'cover',
-                                margin: '0 15px 15px 0',
+                                margin: '0 10px 10px 0',
                                 backgroundPosition: 'center',
                                 '&:hover': {
                                     display: 'flex',

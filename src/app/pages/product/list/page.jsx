@@ -18,7 +18,10 @@ import Card from "@/app/components/Card"
 const List = () => {
     return (
         <TempateDefault>
-            <Container maxWidth='lg'>
+            <Container maxWidth='lg'
+                sx={{
+                    marginTop: '50px'
+                }}>
 
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -45,6 +48,8 @@ const List = () => {
                             backgroundColor: '#ffffff',
                             margintop: '30px',
                             padding: '30px',
+                            marginTop: '50px',
+                            borderRadius: '5px'
                         }} >
                         <Typography component='h6' variant='h6'>
                             Anúncios

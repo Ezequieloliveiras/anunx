@@ -21,10 +21,6 @@ import TemplateDefault from '../../../templates/Default'
 import FileUpload from '../../../components/FileUpload'
 import { initialValues, validationSchema } from './formValues'
 
-const StyledContainer = styled(Container)(({ theme }) => ({
-    padding: theme.spacing(8, 0, 4),
-}))
-
 const Publish = () => {
 
     return (
@@ -56,26 +52,28 @@ const Publish = () => {
                                     flexDirection: 'column',
                                     alignItems: 'center'
                                 }}>
-                                <StyledContainer maxWidth='sm'>
+
+                                <Container maxWidth='sm' sx={{marginTop:'0px'}}>
                                     <Typography component='h1' variant='h2' align='center' color='textPrimary' gutterBottom>
                                         Publicar anúncio
                                     </Typography>
-                                    <Typography component='h5' variant='h5' align='center' color='textPrimary'>
+                                    <Typography component='h5' variant='h5' align='center' color='textPrimary' gutterBottom 
+                                    sx={{marginBottom:'30px'}}
+                                    >
                                         Quanto mais detalhado, melhor!
                                     </Typography>
-                                </StyledContainer>
+                                </Container>
 
                                 <Container maxWidth='md'
                                     sx={{
                                         backgroundColor: '#ffffff',
-                                        padding: '30px',
                                         borderRadius: '5px',
-                                        marginBottom:'20px'
+                                        marginBottom:'20px',
                                     }}>
                                     <Box
                                         sx={{
                                             backgroundColor: '#ffffff',
-                                            padding: '20px',
+                                            padding:'20px 0px',
                                             borderRadius: '5px',
                                             marginBottom: '20px'
                                         }}>
@@ -129,13 +127,13 @@ const Publish = () => {
                                 <Container maxWidth='md'
                                     sx={{
                                         backgroundColor: '#ffffff',
-                                        padding: '20px',
+                                        padding:'0px',
                                         borderRadius: '5px'
                                     }}>
                                     <Box
                                         sx={{
                                             backgroundColor: '#ffffff',
-                                            padding: '20px',
+                                            padding:'10px 0px',
                                             borderRadius: '5px',
                                         }}>
                                         <FileUpload
@@ -149,13 +147,13 @@ const Publish = () => {
                                 <Container maxWidth='md'
                                     sx={{
                                         backgroundColor: '#ffffff',
-                                        padding: '20px',
+                                        padding:'0px',
                                         borderRadius: '5px',
                                         marginTop: '20px'
                                     }}>
                                     <Box sx={{
                                         backgroundColor: '#ffffff',
-                                        padding: '20px',
+                                        paddingBottom:'20px',
                                         borderRadius: '5px'
                                     }}>
                                         <FormControl error={errors.description && touched.description} fullWidth>
@@ -176,14 +174,14 @@ const Publish = () => {
                                 <Container maxWidth='md'
                                     sx={{
                                         backgroundColor: '#ffffff',
-                                        padding: '20px',
+                                        padding:'0px',
                                         borderRadius: '5px',
                                         marginTop: '20px'
                                     }}>
                                     <Box
                                         sx={{
                                             backgroundColor: '#ffffff',
-                                            padding: '20px',
+                                            padding:'20px 0px',
                                             borderRadius: '5px'
                                         }}>
                                         <FormControl error={errors.price && touched.price} fullWidth>
@@ -204,14 +202,13 @@ const Publish = () => {
                                 <Container maxWidth='md'
                                     sx={{
                                         backgroundColor: '#ffffff',
-                                        padding: '20px',
                                         borderRadius: '5px',
                                         marginBottom: '20px',
                                         marginTop: '20px'
                                     }}>
                                     <Box
                                         sx={{
-                                            padding: '20px',
+                                            padding:'20px 0px',
                                             borderRadius: '5px'
                                         }}>
                                         <Typography component='h6' variant='h6' color='textPrimary' gutterBottom >
@@ -263,7 +260,7 @@ const Publish = () => {
                                 <Container maxWidth='md'
                                     sx={{
                                         width: '100%',
-                                        padding: '20px',
+                                        padding:'20px 0px',
                                         borderRadius: '5px',
                                     
                                     }}>
