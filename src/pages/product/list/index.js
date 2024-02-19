@@ -13,7 +13,7 @@ import {
 import Search from "@mui/icons-material/Search"
 
 import TempateDefault from '../../../templates/Default'
-import Card from "@/app/components/Card"
+import Card from "../../../components/Card"
 
 const List = () => {
     return (

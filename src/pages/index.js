@@ -11,9 +11,8 @@ import {
   Typography
 } from '@mui/material'
 
-import './globals.scss'
-import TemplateDefault from './templates/Default'
-import Card from './components/Card';
+import TemplateDefault from '../templates/Default'
+import Card from '../components/Card';
 
 const Home = () => {
 

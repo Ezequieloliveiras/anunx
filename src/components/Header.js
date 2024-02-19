@@ -61,14 +61,14 @@ export default function ButtonAppBar() {
                 horizontal: 'right'
               }}
             >
-              <Link href='/pages/user/dashboard'
+              <Link href='/user/dashboard'
                 style={{
                   textDecoration: 'none',
                   color: 'inherit',
                 }}>
                 <MenuItem>Meus anúncios</MenuItem>
               </Link>
-              <Link href='/pages/user/publish'
+              <Link href='/user/publish'
                 style={{
                   textDecoration: 'none',
                   color: 'inherit',
