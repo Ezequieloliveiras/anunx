@@ -20,7 +20,6 @@ import { initialValues, validationSchema } from '../../auth/signup/formValues'
 import { useToasty } from '../../../contexts/Toasty'
 import TemplateDefault from '../../../templates/Default'
 
-
 const Signup = () => {
     const router =useRouter()
     const { setToasty } = useToasty()
