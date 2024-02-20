@@ -1,7 +1,8 @@
 'use client'
 
 import { Formik } from 'formik'
-import TemplateDefault from '../../../templates/Default'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 import {
     Box,
@@ -12,12 +13,32 @@ import {
     Typography,
     InputLabel,
     Input,
+    CircularProgress,
 } from '@mui/material'
 
 import { initialValues, validationSchema } from '../../auth/signup/formValues'
+import { useToasty } from '../../../contexts/Toasty'
+import TemplateDefault from '../../../templates/Default'
 
 
 const Signup = () => {
+    const router =useRouter()
+    const { setToasty } = useToasty()
+
+    const handleFormSubmit = async values => {
+        const response = await axios.post('/api/users', values)
+
+        if (response.data.success) {
+            setToasty({
+                open: true,
+                severity: 'success',
+                text: 'Cadastro realizado com sucesso!'
+            })
+
+            router.push('/auth/signin')
+        }
+    }
+
     return (
         <TemplateDefault>
             <Container maxWidth='sm' component='main'
@@ -41,9 +62,7 @@ const Signup = () => {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => {
-                            console.log('ok form enviado', values)
-                        }}
+                        onSubmit={handleFormSubmit}
                     >
                         {
                             ({
@@ -52,15 +71,15 @@ const Signup = () => {
                                 errors,
                                 handleChange,
                                 handleSubmit,
+                                isSubmitting,
                             }) => {
                                 return (
-                                    <form
-                                        onSubmit={handleSubmit}
+                                    <form onSubmit={handleSubmit}
                                         style={{
                                             display: 'flex',
                                             flexDirection: 'column',
                                         }}>
-                                        <FormControl fullWdith error={errors.name && touched.name}
+                                        <FormControl fullWidth error={errors.name && touched.name}
                                             sx={{ marginBottom: '20px' }}
                                         >
                                             <InputLabel>Nome</InputLabel>
@@ -74,7 +93,7 @@ const Signup = () => {
                                             </FormHelperText>
                                         </FormControl>
 
-                                        <FormControl fullWdith error={errors.email && touched.email}
+                                        <FormControl fullWidth error={errors.email && touched.email}
                                             sx={{ marginBottom: '20px' }}
                                         >
                                             <InputLabel>E-mail</InputLabel>
@@ -89,7 +108,7 @@ const Signup = () => {
                                             </FormHelperText>
                                         </FormControl>
 
-                                        <FormControl fullWdith error={errors.passwordConf && touched.password}
+                                        <FormControl fullWidth error={errors.passwordConf && touched.password}
                                             sx={{ marginBottom: '20px' }}
                                         >
                                             <InputLabel>Senha</InputLabel>
@@ -104,7 +123,7 @@ const Signup = () => {
                                             </FormHelperText>
                                         </FormControl>
 
-                                        <FormControl fullWdith error={errors.passwordConf && touched.passwordConf}
+                                        <FormControl fullWidth error={errors.passwordConf && touched.passwordConf}
                                             sx={{ marginBottom: '20px' }}
                                         >
                                             <InputLabel>Confirmação de senha</InputLabel>
@@ -119,20 +138,27 @@ const Signup = () => {
                                             </FormHelperText>
                                         </FormControl>
 
-                                        <Button
-                                            type='submit'
-                                            fullWdith
-                                            variant='contained'
-                                            sx={{
-                                                backgroundColor: 'black',
-                                                marginTop: '20px',
-                                                '&:hover': {
-                                                    backgroundColor:'#000000'
-                                                }
-                                            }}
-                                        >
-                                            Cadastrar
-                                        </Button>
+                                        {
+                                            isSubmitting ? (
+                                                <CircularProgress sx={{ display: 'block', margin: '10px auto' }} />
+                                            ) : (
+                                                <Button
+                                                    type='submit'
+                                                    fullWidth
+                                                    variant='contained'
+                                                    sx={{
+                                                        backgroundColor: 'black',
+                                                        marginTop: '20px',
+                                                        '&:hover': {
+                                                            backgroundColor: '#000000'
+                                                        }
+                                                    }}
+                                                >
+                                                    Cadastrar
+                                                </Button>
+                                            )
+                                        }
+
                                     </form>
                                 )
                             }

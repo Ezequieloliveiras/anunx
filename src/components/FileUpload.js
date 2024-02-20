@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from '@mui/system'
 import { useDropzone } from 'react-dropzone'
 import { DeleteForever } from '@mui/icons-material'
 

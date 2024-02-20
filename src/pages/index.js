@@ -19,11 +19,17 @@ const Home = () => {
   return (
     <>
       <TemplateDefault>
-        <Container maxWidth='lg' className='searchContainer'>
+        <Container maxWidth='lg' sx={{ marginTop: '50px' }}>
           <Typography component='h1' variant='h3' align='center' color='textPrimary'>
             O que deseja encontrar?
           </Typography>
-          <Paper className='searchBox'>
+          <Paper
+            sx={{
+              marginTop: '50px',
+              display: 'flex',
+              padding: '10px'
+            }}
+          >
             <InputBase
               placeholder='Ex. iphone 12 com garatia'
               fullWidth
@@ -33,8 +39,8 @@ const Home = () => {
             </IconButton>
           </Paper>
         </Container>
-        <Container maxWidth='lg' className='cardGrid'>
-          <Typography component='h2' variant='h4' align='center' color='textPrimary'>
+        <Container maxWidth='lg' sx={{marginBottom:'50px'}} >
+          <Typography component='h2' variant='h4' align='center' color='textPrimary' sx={{ marginTop: '50px' }}>
             Destaques
           </Typography>
           <br />

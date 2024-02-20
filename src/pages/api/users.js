@@ -26,8 +26,6 @@ const users = async (req, res) => {
 
       const passwordCrypto = await crypto(password)
 
-      
-
       const user = new UsersModel({
         name,
         email,
