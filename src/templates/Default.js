@@ -8,7 +8,7 @@ const Default = ({ children }) => {
 
         <div>
             <Header />
-            <Container sx={{margin:'none'}}>
+            <Container sx={{ margin: 'none' }}>
                 {children}
             </Container>
             <Footer />

@@ -1,4 +1,5 @@
 import { styled } from '@mui/system'
+
 import { useDropzone } from 'react-dropzone'
 import { DeleteForever } from '@mui/icons-material'
 
@@ -63,7 +64,7 @@ const FileUpload = ({ files, errors, touched, setFieldValue }) => {
                 sx={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    padding:'0px'
+                    padding: '0px'
                 }}>
                 <Box
                     sx={{
@@ -75,7 +76,7 @@ const FileUpload = ({ files, errors, touched, setFieldValue }) => {
                         height: '150px',
                         backgroundColor: 'rgb(242, 244, 245)',
                         border: '2px dashed black',
-                        marginRight:'10px'
+                        marginRight: '10px'
 
                     }}{...getRootProps()}>
                     <input name='files'{...getInputProps()} />

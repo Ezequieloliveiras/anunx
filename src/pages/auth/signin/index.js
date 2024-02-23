@@ -1,7 +1,6 @@
 'use client'
 
 import { Formik } from 'formik'
-import axios from 'axios'
 import { useRouter } from 'next/router'
 
 import {
@@ -17,15 +16,19 @@ import {
 } from '@mui/material'
 
 import { initialValues, validationSchema } from '../../auth/signup/formValues'
-import { useToasty } from '../../../contexts/Toasty'
 import TemplateDefault from '../../../templates/Default'
+import signin from '../../../pages/auth/signin'
 
 const Signin = () => {
   const router = useRouter()
-  const { setToasty } = useToasty()
 
-  const handleFormSubmit = async values => {
-    
+
+  const handleFormSubmit = values => {
+    signin('credentials', {
+      email: values.email,
+      password: values.password,
+      callbackUrl: 'http://localhost:3000/user/dashboard/anunx'
+    })
   }
 
   return (

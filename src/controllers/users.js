@@ -1,9 +1,11 @@
-import UsersModel from '../models/users'
+
+
 import dbConnect from "../utils/dbConnect"
-import { crypto } from "../utils/password"
+import UsersModel from '../models/users'
+import { crypto } from "../utils/password.js"
 
 const get = async (req, res) => {
-    
+
     await dbConnect()
     const users = await UsersModel.find()
     res.status(200).json({ success: true, users })
