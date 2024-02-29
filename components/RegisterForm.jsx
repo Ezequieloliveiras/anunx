@@ -4,17 +4,16 @@ import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import {
+    Container,
     Input,
     Box,
     Button,
     Typography,
-    Container,
     Alert,
-    InputLabel
+    InputLabel,
 } from "@mui/material"
 
 import FormControl from '@mui/material/FormControl'
-
 
 
 export default function RegisterForm() {
@@ -92,7 +91,7 @@ export default function RegisterForm() {
                 display: 'flex',
                 flexDirection: 'column',
                 borderRadius: '5px',
-                width:'600px'
+                width: '600px'
             }}>
                 <Typography
                     variant='h4'
@@ -100,12 +99,13 @@ export default function RegisterForm() {
                     color='textPrimary'
                     gutterBottom
                 >
-                    Register
+                    Registre-se
                 </Typography>
+
                 <form onSubmit={handleSubmit}>
 
                     <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Full Name</InputLabel>
+                        <InputLabel htmlFor="my-input">Nome</InputLabel>
                         <Input
                             sx={{ margin: '15px 0px ' }}
                             onChange={(e) => setName(e.target.value)}
@@ -115,7 +115,7 @@ export default function RegisterForm() {
                     </FormControl>
 
                     <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input"> Email Adress</InputLabel>
+                        <InputLabel htmlFor="my-input">Email</InputLabel>
                         <Input
                             sx={{ margin: '15px 0px' }}
                             onChange={(e) => setEmail(e.target.value)}
@@ -125,7 +125,7 @@ export default function RegisterForm() {
                     </FormControl>
 
                     <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input"> Password Adress</InputLabel>
+                        <InputLabel htmlFor="my-input">Senha</InputLabel>
                         <Input
                             sx={{ margin: '15px 0px' }}
                             onChange={(e) => setPassword(e.target.value)}
@@ -143,16 +143,34 @@ export default function RegisterForm() {
                         type="submit"
                         fullWidth
                     >
-                        Register
+                        Registre-se
                     </Button>
-                    
+
                 </form>
                 {error && (
-                    <Alert severity="error" sx={{ marginBottom: '20px' }} fullWidth>
+                    <Alert
+                        severity="error"
+                        sx={{
+                            marginBottom: '20px'
+                        }}
+                        fullWidth
+                    >
                         {error}
                     </Alert>
                 )}
-                <Link style={{ textDecoration: 'none', color: 'grey', fontFamily: 'Roboto' }} href={'/'}>Already have an count?<span style={{ color: 'grey' }}> Login</span></Link>
+                <Link
+                    style={{
+                        textDecoration: 'none',
+                        color: 'grey',
+                        fontFamily: 'Roboto'
+                    }} href={'/'}
+                >
+                    <Typography
+                        style={{ color: 'grey' }}
+                    >
+                        Já possui conta? Login
+                    </Typography>
+                </Link>
             </Box>
         </Container>
     )
