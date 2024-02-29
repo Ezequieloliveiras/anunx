@@ -3,18 +3,22 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { Formik } from "formik"
+import FormControl from "@mui/material/FormControl"
+
 import {
     Container,
     Input,
     Box,
+    FormHelperText,
     Button,
     Typography,
     Alert,
     InputLabel,
 } from "@mui/material"
 
-import FormControl from '@mui/material/FormControl'
 
+import { initialValues, validationSchema } from './js/formValuesTree'
 
 export default function RegisterForm() {
     const [name, setName] = useState("")
@@ -24,7 +28,7 @@ export default function RegisterForm() {
 
     const router = useRouter()
 
-    const handleSubmit = async (e) => {
+    const handleSubmitCredentials = async (e) => {
         e.preventDefault()
 
         // esse codigo verifica se os campos nao estao inseridos e se estao indisponiveis
@@ -78,101 +82,152 @@ export default function RegisterForm() {
     }
 
     return (
-        <Container
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '100vh'
-            }}>
-            <Box sx={{
-                backgroundColor: 'white',
-                padding: '30px',
-                display: 'flex',
-                flexDirection: 'column',
-                borderRadius: '5px',
-                width: '600px'
-            }}>
-                <Typography
-                    variant='h4'
-                    align='center'
-                    color='textPrimary'
-                    gutterBottom
-                >
-                    Registre-se
-                </Typography>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+                console.log('ok enviou o form', values)
+            }}
+        >
+            {
+                ({
+                    handleSubmit,
+                    values,
+                    touched,
+                    errors,
+                    handleChange,
+                }) => {
+                    return (
+                        <Container
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                minHeight: '100vh'
+                            }}>
+                            <Box sx={{
+                                backgroundColor: 'white',
+                                padding: '30px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                borderRadius: '5px',
+                                width: '600px'
+                            }}>
+                                <Typography
+                                    variant='h4'
+                                    align='center'
+                                    color='textPrimary'
+                                    gutterBottom
+                                >
+                                    Registre-se
+                                </Typography>
 
-                <form onSubmit={handleSubmit}>
+                                <form onSubmit={(e) => {
+                                    e.preventDefault(); // Evita o comportamento padrão de recarregar a página
+                                    handleSubmit(e); // Chama a primeira função de submissão
+                                    handleSubmitCredentials(e); // Chama a segunda função de submissão
+                                }}>
 
-                    <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Nome</InputLabel>
-                        <Input
-                            sx={{ margin: '15px 0px ' }}
-                            onChange={(e) => setName(e.target.value)}
-                            type="text"
-                            fullWidth
-                        />
-                    </FormControl>
+                                    <FormControl error={errors.name && touched.name} fullWidth>
+                                        <InputLabel htmlFor="my-input">Nome</InputLabel>
+                                        <Input
+                                            sx={{ margin: '15px 0px ' }}
+                                            onChange={(e) => {
+                                                handleChange(e); // Chama o handleChange fornecido pelo Formik para atualizar os valores do formulário
+                                                setName(e.target.value); // Atualiza o estado local do name
+                                            }}
+                                            type="text"
+                                            name="name"
+                                            value={values.name}
+                                            error={!!errors.name && touched.name ? errors.name : null}
+                                            fullWidth
+                                        />
+                                        <FormHelperText>
+                                            {errors.name && touched.name ? errors.name : null}
+                                        </FormHelperText>
+                                    </FormControl>
 
-                    <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Email</InputLabel>
-                        <Input
-                            sx={{ margin: '15px 0px' }}
-                            onChange={(e) => setEmail(e.target.value)}
-                            type="text"
-                            fullWidth
-                        />
-                    </FormControl>
+                                    <FormControl error={errors.email && touched.email} fullWidth>
+                                        <InputLabel htmlFor="my-input">Email</InputLabel>
+                                        <Input
+                                            sx={{ margin: '15px 0px' }}
+                                            onChange={(e) => {
+                                                handleChange(e); // Chama o handleChange fornecido pelo Formik para atualizar os valores do formulário
+                                                setEmail(e.target.value); // Atualiza o estado local do password
+                                            }}
+                                            name="email"
+                                            type="text"
+                                            value={values.email}
+                                            error={!!errors.email && touched.email ? errors.email : null}
+                                            fullWidth
+                                        />
+                                        <FormHelperText>
+                                            {errors.email && touched.email ? errors.email : null}
+                                        </FormHelperText>
+                                    </FormControl>
 
-                    <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Senha</InputLabel>
-                        <Input
-                            sx={{ margin: '15px 0px' }}
-                            onChange={(e) => setPassword(e.target.value)}
-                            type="password"
-                            fullWidth
-                        />
-                    </FormControl>
+                                    <FormControl error={errors.password && touched.password} fullWidth>
+                                        <InputLabel htmlFor="my-input">Senha</InputLabel>
+                                        <Input
+                                            sx={{ margin: '15px 0px' }}
+                                            onChange={(e) => {
+                                                handleChange(e); // Chama o handleChange fornecido pelo Formik para atualizar os valores do formulário
+                                                setPassword(e.target.value); // Atualiza o estado local do password
+                                            }}
+                                            name="password"
+                                            type="password"
+                                            value={values.password}
+                                            error={!!errors.password && touched.password ? errors.password : null}
+                                            fullWidth
+                                        />
+                                        <FormHelperText>
+                                            {errors.password && touched.password ? errors.password : null}
+                                        </FormHelperText>
+                                    </FormControl>
 
-                    <Button
-                        style={{
-                            backgroundColor: '#000000',
-                            color: '#ffffff',
-                            margin: '30px 0px'
-                        }}
-                        type="submit"
-                        fullWidth
-                    >
-                        Registre-se
-                    </Button>
+                                    <Button
+                                        style={{
+                                            backgroundColor: '#000000',
+                                            color: '#ffffff',
+                                            margin: '30px 0px'
+                                        }}
+                                        type="submit"
+                                        fullWidth
+                                    >
+                                        Registre-se
+                                    </Button>
 
-                </form>
-                {error && (
-                    <Alert
-                        severity="error"
-                        sx={{
-                            marginBottom: '20px'
-                        }}
-                        fullWidth
-                    >
-                        {error}
-                    </Alert>
-                )}
-                <Link
-                    style={{
-                        textDecoration: 'none',
-                        color: 'grey',
-                        fontFamily: 'Roboto'
-                    }} href={'/'}
-                >
-                    <Typography
-                        style={{ color: 'grey' }}
-                    >
-                        Já possui conta? Login
-                    </Typography>
-                </Link>
-            </Box>
-        </Container>
+                                </form>
+                                {error && (
+                                    <Alert
+                                        severity="error"
+                                        sx={{
+                                            marginBottom: '20px'
+                                        }}
+                                        fullWidth
+                                    >
+                                        {error}
+                                    </Alert>
+                                )}
+                                <Link
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'grey',
+                                        fontFamily: 'Roboto'
+                                    }} href={'/'}
+                                >
+                                    <Typography
+                                        style={{ color: 'grey' }}
+                                    >
+                                        Já possui conta? Login
+                                    </Typography>
+                                </Link>
+                            </Box>
+                        </Container>
+                    )
+                }
+            }
+        </Formik >
     )
 }
 

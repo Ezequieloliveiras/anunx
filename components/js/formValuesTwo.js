@@ -1,6 +1,7 @@
 import * as yup from 'yup'
 
 const initialValues = {
+  name:'',
   email: '',
   password: '',
 }
