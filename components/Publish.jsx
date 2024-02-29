@@ -18,7 +18,7 @@ import {
 
 import TemplateDefault from '../templates/Default'
 import FileUpload from '../components/js/FileUpload'
-import { initialValues, validationSchema } from './js/FormValues'
+import { initialValues, validationSchema } from './js/formValuesOne'
 
 const Publish = () => {
 
