@@ -8,7 +8,6 @@ import {
   Link,
 } from '@mui/material'
 
-
 import TemplateDefault from '../templates/Default'
 import Card from '../components/js/Card'
 
@@ -20,14 +19,8 @@ export default function Dashboard() {
         <Typography component='h1' variant='h2' align='center'>
           Meus Anúncios
         </Typography>
-        <Link href='/dashboard/publish'
-          sx={{
-            textDecoration: 'none',
-            color:'#000000'
-          }}
-           >
+        <Link href='/dashboard/publish' sx={{ textDecoration: 'none', color: '#000000' }}>
           <Button variant='contained' color='inherit'
-
             sx={{
               margin: '30px auto',
               display: 'block',
